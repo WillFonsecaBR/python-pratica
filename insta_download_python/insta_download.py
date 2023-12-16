@@ -18,7 +18,7 @@ def main(user):
     except Exception as e:
         print(f"Ocorreu um erro ao processar o perfil: {e}")
         sys.exit(1)
-
+    
 
 def organizar_arquivos(pasta, pasta_destino):
     try:
@@ -99,7 +99,6 @@ def instagram_download(perfil, instagram_username):
         print(f"QUANTIDADES DE POSTS: {counter}")
 
         # ORGANIZANDO ARQUIVOS
-
     except Exception as e:
         print(f"Error: {e}")
 
@@ -107,27 +106,3 @@ def instagram_download(perfil, instagram_username):
 if __name__ == "__main__":
     instagram_username = "instadownloadbrasil"  # SUBISTITUIR ANTES DE RODAR
     main(instagram_username)
-
-
-for raiz, _, arquivos in os.walk(pasta):
-    for arquivo in arquivos:
-        caminho_arquivo = os.path.join(raiz, arquivo)
-        extensao = os.path.splitext(arquivo)[-1].lower()
-
-        if extensao in extensoes_video:
-            shutil.move(caminho_arquivo, os.path.join(pasta_video, arquivo))
-            print(f"Movido para pasta de vídeos: {caminho_arquivo}")
-        elif extensao in extensoes_imagem:
-            shutil.move(caminho_arquivo, os.path.join(pasta_imagem, arquivo))
-            print(f"Movido para pasta de imagens: {caminho_arquivo}")
-        elif extensao in extensoes_txt:
-            shutil.move(caminho_arquivo, os.path.join(pasta_txt, arquivo))
-            print(f"Movido para pasta de txt: {caminho_arquivo}")
-        elif extensao in extensoes_xz:
-            shutil.move(caminho_arquivo, os.path.join(pasta_xz, arquivo))
-            print(f"Movido para pasta de xz: {caminho_arquivo}")
-
-    # Removendo a pasta após mover todos os arquivos
-    if not os.listdir(raiz):
-        os.rmdir(raiz)
-        print(f"Pasta removida: {raiz}")
